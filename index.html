@@ -3,40 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sathwik's Writings | Screenplay Portfolio</title>
+    <title>Sathwik's Writings | Industry Screenplay Slate v3.0</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Fixed Navigation Header -->
+    <!-- Fixed Header & Glassmorphism Navigation -->
     <header class="app-header">
         <div class="logo">Sathwik's Writings</div>
         <nav class="nav-links">
-            <a href="#scripts-section">Scripts</a>
-            <a href="#about-section">About</a>
-            <a href="#contact-section">Contact</a>
+            <a href="#scripts-section">Scripts Slate</a>
+            <a href="#about-section">Director Bio</a>
+            <a href="#contact-section">Inquiries</a>
+            <div class="bookmark-counter-wrapper">Bookmarks: <span id="saved-count">0</span></div>
             <button id="theme-toggle" aria-label="Toggle dark/light mode">🌓</button>
         </nav>
     </header>
 
-    
+    <!-- Hero Showcase Section with Animated Typing Taglines -->
     <section class="hero-section">
         <h1>Kancharla Sathwik Prince</h1>
-        <p class="tagline">Screenplay Writer • Director <span class="sub-role">(Shooting Scripts Only)</span> • Editor <span class="sub-role">(Lined Scripts Only)</span></p>
+        <div class="typing-container">
+            <span class="static-txt">Expertise: </span>
+            <span class="dynamic-txt" id="typing-skill">Screenplay Writer</span>
+        </div>
     </section>
 
-    <!-- Main Content Container -->
+    <!-- Main Content Area -->
     <main class="portfolio-container">
 
-        <!-- Showcase & Filtering Area -->
+        <!-- Global Portfolio Metrics Dashboard -->
+        <section class="metrics-dashboard">
+            <div class="metric-card">
+                <span class="metric-num">8</span>
+                <span class="metric-label">Completed Slates</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-num">785</span>
+                <span class="metric-label">Total Pages Drafted</span>
+            </div>
+            <div class="metric-card" style="grid-column: span 2;">
+                <span class="metric-label">Creative Output Slate Composition</span>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" style="width: 75%;">6 Features (75%)</div>
+                    <div class="progress-bar-fill short-fill" style="width: 25%;">2 Shorts (25%)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scripts Showcase Section -->
         <section id="scripts-section" class="main-section">
             <div class="section-header">
-                <h2>Screenplays & Slate (v2.0)</h2>
+                <h2>Screenplays & Cinematic Concepts</h2>
+                <div class="interactive-utility-bar">
+                    <div id="tag-cloud" class="tag-cloud-container"></div>
+                    <button id="lucky-btn" class="utility-btn">🎲 I'm Feeling Lucky</button>
+                    <button id="dossier-btn" class="utility-btn">📋 Download Dossier</button>
+                </div>
                 
-                <!-- Main Search and Dropdown Controls -->
                 <div class="search-filter-controls">
-                    <input type="text" id="search-bar" placeholder="Search by title, keyword, or plot...">
-                    
+                    <input type="text" id="search-bar" placeholder="Search title, character, tone, or key dialogue logs...">
                     <select id="genre-filter">
                         <option value="all">All Genres</option>
                         <option value="action">Action</option>
@@ -48,47 +74,98 @@
                         <option value="sci-fi">Sci-Fi</option>
                         <option value="thriller">Thriller</option>
                     </select>
-                    
                     <select id="format-filter">
                         <option value="all">All Formats</option>
                         <option value="feature">Feature Film</option>
                         <option value="short film">Short Film</option>
                     </select>
-
                     <select id="status-filter">
                         <option value="all">All Draft Statuses</option>
                         <option value="First Draft">First Draft</option>
-                        <option value="Final Draft">Final Draft</option>
-                        <option value="Ready Script">Ready Script</option>
+                        <option value="Polished Draft">Polished Draft</option>
+                        <option value="Shooting Script">Shooting Script</option>
                     </select>
-
                     <select id="industry-filter">
-                        <option value="all">All Target Industries</option>
-                        <option value="telugu">Telugu Cinema</option>
-                        <option value="pan-india">Pan-India</option>
+                        <option value="all">All Industry Target Markets</option>
+                        <option value="Telugu Cinema">Telugu Cinema</option>
+                        <option value="Pan-India">Pan-India</option>
                     </select>
                 </div>
-
-                <!-- Interactive Theme Tag Cloud -->
-                <div id="tag-cloud" class="tag-cloud-container"></div>
             </div>
 
-            <!-- Screenplay Display Layout Target -->
+            <!-- Dynamic Scripts Grid Container -->
             <div id="scripts-grid" class="scripts-grid"></div>
         </section>
 
-        <!-- About Profile Card -->
+        <!-- About Me Section -->
         <section id="about-section" class="main-section profile-card">
-            <h2>About The Writer</h2>
-            <p>I am an innovative storyteller balancing technical precision and creative vision. My journey into screenwriting began in <strong>March 2025</strong> while pursuing my <strong>I BTECH II CSE</strong> degree at the <strong>NRI Institute of Technology (Autonomous)</strong> in Visadala, Guntur, Andhra Pradesh. Currently in my <strong>III year</strong>, I treat screenwriting as both an art form and a precise science.</p>
-            <p>My artistic identity is built upon clear creative boundaries: I craft rich foundational narratives as a <strong>Screenplay Writer</strong>, transition concepts into technical execution as a <strong>Director for shooting scripts only</strong>, and orchestrate visual structures as an <strong>Editor for lined scripts only</strong>.</p>
+            <h2>Creative Evolution & Methodology</h2>
+            <p>My journey into screenwriting began in <strong>March 2025</strong> while pursuing my <strong>I BTECH II CSE</strong> degree at the <strong>NRI Institute of Technology (Autonomous)</strong> in Visadala, Guntur, Andhra Pradesh. Balancing rigorous engineering architecture logic with pure storytelling metrics, I am currently in my <strong>III year</strong>.</p>
             
-            <div class="toolkit-box" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px dashed var(--border-color);">
-                <strong>💻 Writer's Toolkit:</strong> Final Draft • Fade In • WriterDuet
+            <div class="methodology-blocks">
+                <div class="m-block">
+                    <h4>Screenplay Writer</h4>
+                    <p>Building comprehensive structures, commercial hooks, logical plots, and clear dialogue matrices built specifically for modern audience consumption patterns.</p>
+                </div>
+                <div class="m-block">
+                    <h4>Director (Shooting Scripts Only)</h4>
+                    <p>Formulating camera movements, blocking, visual layouts, and framing elements strictly at the script stage without encroaching on production variables.</p>
+                </div>
+                <div class="m-block">
+                    <h4>Editor (Lined Scripts Only)</h4>
+                    <p>Structuring clean pacing, non-linear cut points, visual rhythms, and alignment workflows mapped directly within the scene documentation boundaries.</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top:2rem; font-weight:400; font-size:1.2rem;">Creative Journey Timeline</h3>
+            <div class="vertical-timeline">
+                <div class="timeline-item">
+                    <div class="time-marker"></div>
+                    <div class="time-content">
+                        <strong>March 2025</strong>
+                        <p>Began narrative architectural journey at NRIIT CSE during I BTECH II Semester.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-marker"></div>
+                    <div class="time-content">
+                        <strong>Mid 2025</strong>
+                        <p>Drafted commercial features (Gongoora Chicken, Rayalaseema Rakkasi) mapping local subcultures.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-marker"></div>
+                    <div class="time-content">
+                        <strong>2026 (Present)</strong>
+                        <p>Currently in III Year CSE, scaling complex screenplays (Yantra, Garuda Puranam) utilizing high-concept tech-driven tools.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Writer's Toolkit Block -->
+            <div class="toolkit-container">
+                <h4>Technical Writer's Toolkit Stack:</h4>
+                <div class="toolkit-badges">
+                    <span class="tool-badge">Fade In Professional</span>
+                    <span class="tool-badge">Final Draft 13</span>
+                    <span class="tool-badge">WriterDuet Cloud</span>
+                    <span class="tool-badge">Git & Version Control</span>
+                </div>
             </div>
         </section>
 
-        <!-- Dynamic Contact Interface -->
+        <!-- Testimonials Feedback Slider Container -->
+        <section class="main-section profile-card feedback-slider-section">
+            <h2>Industry Script Reader Assessments</h2>
+            <div class="feedback-container">
+                <div class="feedback-slide active-feedback">
+                    <p class="quote">"Sathwik's structure inside 'Yantra' displays a rare mastery of structural setups and payoffs. The technical notes highlight an outstanding asset for modern visual storytelling."</p>
+                    <span class="author">- Script Assessment Bureau Analyst</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Contact Section -->
         <section id="contact-section" class="main-section contact-card">
             <h2>Industry Representation & Inquiries</h2>
             <p>For script options, representation inquiries, or discussing shooting/lined script collaborations, get in touch directly.</p>
@@ -99,28 +176,30 @@
             
             <form id="portfolio-contact-form" class="contact-form">
                 <div class="form-group">
-                    <label for="contact-purpose">Reason for Contact</label>
-                    <select id="contact-purpose" required>
-                        <option value="" disabled selected>Select a purpose...</option>
-                        <option value="Script Optioning">Script Optioning / Purchase</option>
-                        <option value="Director Collaboration">Director Collaboration (Shooting Script)</option>
-                        <option value="Editor Collaboration">Editor Collaboration (Lined Script)</option>
-                        <option value="General Feedback">General Feedback</option>
-                    </select>
-                </div>
-                <div class="form-row" style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem;">
-                    <div class="form-group">
-                        <label for="form-name">Name / Company</label>
-                        <input type="text" id="form-name" required placeholder="Your name or Production House">
-                    </div>
-                    <div class="form-group">
-                        <label for="form-email">Email Address</label>
-                        <input type="email" id="form-email" required placeholder="your.email@company.com">
-                    </div>
+                    <label for="form-name">Name / Company</label>
+                    <input type="text" id="form-name" required placeholder="Production House, Producer, or Director name">
                 </div>
                 <div class="form-group">
-                    <label for="form-message">Message</label>
-                    <textarea id="form-message" rows="5" required placeholder="Specify which script slate or project you are interested in exploring..."></textarea>
+                    <label for="form-email">Email Address</label>
+                    <input type="email" id="form-email" required placeholder="your.email@company.com">
+                </div>
+                <div class="form-group">
+                    <label for="form-target-script">Regarding Project Slate Context</label>
+                    <select id="form-target-script">
+                        <option value="General Slate Collaboration Inquiry">General Slate Collaboration Inquiry</option>
+                        <option value="Veera Prathapam (Action)">Veera Prathapam (Action)</option>
+                        <option value="Gongoora Chicken (Comedy)">Gongoora Chicken (Comedy)</option>
+                        <option value="Vamsavruksham (Drama)">Vamsavruksham (Drama)</option>
+                        <option value="Garuda Puranam (Fantasy)">Garuda Puranam (Fantasy)</option>
+                        <option value="Rayalaseema Rakkasi (Horror)">Rayalaseema Rakkasi (Horror)</option>
+                        <option value="Godavari Gattu Meeda (Romance)">Godavari Gattu Meeda (Romance)</option>
+                        <option value="Yantra (Sci-Fi)">Yantra (Sci-Fi)</option>
+                        <option value="Case No. 1999 (Thriller)">Case No. 1999 (Thriller)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="form-message">Message Dossier Request</label>
+                    <textarea id="form-message" rows="5" required placeholder="Specify your distribution objectives, production scales, or timeline brackets..."></textarea>
                 </div>
                 <button type="submit" id="submit-btn">Send Message</button>
                 <div id="form-success-msg" class="success-message hidden">Your message has been processed successfully! Sathwik will respond via email.</div>
@@ -129,14 +208,15 @@
 
     </main>
 
-    <!-- Floating Top Navigator Button -->
-    <button id="back-to-top" class="back-to-top-btn" aria-label="Scroll back to top">▲</button>
+    <!-- Floating Back to Top Button Component -->
+    <button id="back-to-top" title="Go to top">▲</button>
 
+    <!-- Footer Copyright -->
     <footer class="app-footer">
         <p>&copy; 2026 Kancharla Sathwik Prince. All rights reserved.</p>
     </footer>
 
-    <!-- Essential script linkage configuration order (Data file MUST execute first) -->
+    <!-- Script execution linkage order (Data must load prior to core logic) -->
     <script src="scripts-data.js"></script>
     <script src="app.js"></script>
 </body>
