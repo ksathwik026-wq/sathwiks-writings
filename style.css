@@ -1,83 +1,1006 @@
-/* Premium Glassmorphic Core Variables v3.0 */
+/* ==========================================================================
+   1. CORE VARIABLES & DESIGN TOKENS
+   ========================================================================== */
 :root {
-    --bg-main: #f3f4f6;
-    --bg-card: rgba(255, 255, 255, 0.75);
-    --bg-glass: rgba(255, 255, 255, 0.45);
-    --text-primary: #111827;
-    --text-secondary: #4b5563;
+    --bg-main: #f4f6f8;
+    --bg-card: #ffffff;
+    --text-primary: #111111;
+    --text-secondary: #555555;
     --accent-color: #000000;
-    --border-color: rgba(0, 0, 0, 0.08);
-    --script-paper: #f9fafb;
+    --border-color: #e2e8f0;
+    --script-paper: #ffffff;
     --script-text: #111111;
-    --glass-blur: blur(12px);
-    --shadow-sm: 0 4px 6px -1px rgba(0,0,0,0.05);
+    --glass-bg: rgba(255, 255, 255, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.5);
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+    --shadow-md: 0 10px 20px rgba(0,0,0,0.05);
 }
 
 [data-theme="dark"] {
-    --bg-main: #0b0f17;
-    --bg-card: rgba(20, 26, 38, 0.8);
-    --bg-glass: rgba(13, 18, 28, 0.5);
-    --text-primary: #f9fafb;
-    --text-secondary: #9ca3af;
+    --bg-main: #0a0b0d;
+    --bg-card: #12141c;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
     --accent-color: #38bdf8;
-    --border-color: rgba(255, 255, 255, 0.08);
-    --script-paper: #111318;
-    --script-text: #e5e7eb;
+    --border-color: #1e293b;
+    --script-paper: #151821;
+    --script-text: #f1f5f9;
+    --glass-bg: rgba(18, 20, 28, 0.75);
+    --glass-border: rgba(30, 41, 59, 0.5);
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.2);
+    --shadow-md: 0 10px 20px rgba(0,0,0,0.3);
 }
 
+/* ==========================================================================
+   2. GLOBAL RESETS & GENERAL LAYOUTS
+   ========================================================================== */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: var(--bg-main);
     color: var(--text-primary);
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", Roboto, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.6;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Glassmorphic Navigation Bar Layout */
+/* Glassmorphism Structural Class */
+.glassmorphism {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-md);
+}
+
+/* ==========================================================================
+   3. APP HEADER & NAVIGATION BAR
+   ========================================================================== */
 .app-header {
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    background: var(--bg-glass);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border-bottom: 1px solid var(--border-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1.2rem 5%;
+    transition: background 0.3s ease;
 }
 
 .logo {
     font-weight: 800;
-    font-size: 1.3rem;
+    font-size: 1.15rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
+}
+
+.v4-pill {
+    font-size: 0.7rem;
+    background: var(--accent-color);
+    color: var(--bg-card);
+    padding: 0.15rem 0.5rem;
+    border-radius: 20px;
+    margin-left: 0.4rem;
+    vertical-align: middle;
 }
 
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 1.8rem;
 }
 
 .nav-links a {
     color: var(--text-secondary);
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 600;
-    transition: color 0.2s;
+    transition: color 0.2s ease;
 }
 
-.nav-links a:hover { color: var(--text-primary); }
+.nav-links a:hover {
+    color: var(--text-primary);
+}
 
-.bookmark-counter-wrapper {
+.bookmark-counter {
     font-size: 0.85rem;
-    font-weight:
+    font-weight: 700;
+    border-left: 2px solid var(--border-color);
+    padding-left: 1rem;
+}
+
+#theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: transform 0.2s ease;
+}
+
+#theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* ==========================================================================
+   4. CINEMATIC HERO SECTION
+   ========================================================================== */
+.hero-section {
+    padding: 12rem 5% 6rem 5%;
+    text-align: center;
+    background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.05), transparent 40%);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.cinematic-glitch-text {
+    font-size: 3.5rem;
+    font-weight: 300;
+    letter-spacing: -1.5px;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+}
+
+.tagline {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+}
+
+.sub-role {
+    font-size: 0.85rem;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+.hero-action-panel {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.v4-prime-btn, .v4-secondary-btn {
+    padding: 0.8rem 1.6rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.v4-prime-btn {
+    background-color: var(--text-primary);
+    color: var(--bg-main);
+    border: none;
+}
+
+.v4-prime-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.v4-secondary-btn {
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.v4-secondary-btn:hover {
+    background-color: var(--border-color);
+}
+
+/* ==========================================================================
+   5. PORTFOLIO WORKSPACE CONTAINER
+   ========================================================================== */
+.portfolio-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 5%;
+}
+
+.main-section {
+    margin-bottom: 7rem;
+}
+
+.section-header h2 {
+    font-size: 2.2rem;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    margin-bottom: 1.5rem;
+}
+
+/* Dynamic Tag Cloud Filter System */
+.tag-cloud-wrapper {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.tag-item {
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.35rem 0.8rem;
+    border-radius: 20px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+}
+
+.tag-item:hover, .tag-item.active {
+    background-color: var(--text-primary);
+    color: var(--bg-main);
+    border-color: var(--text-primary);
+}
+
+/* Complex Filter Forms Controller */
+.search-filter-controls {
+    padding: 1.5rem;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.search-input-wrapper input {
+    width: 100%;
+    padding: 0.9rem 1.2rem;
+    font-size: 1rem;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    border-radius: 6px;
+    outline: none;
+}
+
+.select-filters-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.8rem;
+}
+
+.select-filters-grid select {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    outline: none;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   6. SCREENPLAY METRICS STACK CARDS (ACCORDION & GRIDS)
+   ========================================================================== */
+.scripts-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2.5rem;
+}
+
+.script-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: box-shadow 0.2s ease;
+}
+
+.script-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.script-summary {
+    padding: 1.8rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.cinematic-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+}
+
+.status-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    background-color: rgba(56, 189, 248, 0.15);
+    color: var(--accent-color);
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+}
+
+.script-meta-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.6rem;
+}
+
+.badge {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 0.25rem 0.60rem;
+    border-radius: 4px;
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+.badge.genre-tag {
+    background-color: var(--text-primary);
+    color: var(--bg-card);
+    border: none;
+}
+
+.v3-action-btn {
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.v3-action-btn:hover {
+    background-color: var(--bg-main);
+}
+
+.accordion-arrow {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    transition: transform 0.3s ease;
+}
+
+/* Accordion Expansion Controls */
+.script-details-pane {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
+}
+
+.script-card.expanded .script-details-pane {
+    max-height: 3500px;
+    transition: max-height 0.5s cubic-bezier(1, 0, 1, 0);
+    border-top: 1px solid var(--border-color);
+}
+
+.script-card.expanded .accordion-arrow {
+    transform: rotate(180deg);
+}
+
+.details-content-inner {
+    padding: 2.2rem;
+}
+
+/* ==========================================================================
+   7. IDEA 2: LIVE METRICS & PURE CSS CIRCULAR RING METERS
+   ========================================================================== */
+.meta-metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    background-color: var(--bg-main);
+    padding: 1rem 1.5rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+/* Dashboard Analytics Row Grid */
+.v4-dashboard-row {
+    display: grid;
+    grid-template-columns: 1fr 1.8fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.metrics-ring-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: center;
+    justify-items: center;
+    background: var(--bg-main);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+/* Pure CSS Conic Gradient Ring Construction */
+.ring-meter-container {
+    text-align: center;
+}
+
+.ring-chart {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: conic-gradient(var(--accent-color) calc(var(--percentage) * 1%), var(--border-color) 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.6rem auto;
+}
+
+/* Center mask to turn circle to ring */
+.ring-chart::before {
+    content: "";
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: var(--bg-main);
+}
+
+.ring-percentage-label {
+    position: relative;
+    font-size: 0.95rem;
+    font-weight: 800;
+    z-index: 5;
+}
+
+.ring-meta-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+/* Linear Progress Bar Metric Lists Layout */
+.metrics-bars-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    background: var(--bg-main);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.bar-metric-item h5 {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.35rem;
+}
+
+.bar-track {
+    width: 100%;
+    height: 8px;
+    background-color: var(--border-color);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    background-color: var(--text-primary);
+    border-radius: 10px;
+    width: 0%;
+    transition: width 1s cubic-bezier(0.1, 1, 0.1, 1);
+}
+
+/* Text Elements Optimization classes */
+.script-v3-hook {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    border-left: 3px solid var(--text-primary);
+    padding-left: 0.8rem;
+}
+
+/* ==========================================================================
+   8. HOLLYWOOD STANDARD VIEWPORT & SIDEBARS
+   ========================================================================== */
+.script-v2-tabs {
+    display: flex;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+    margin: 2rem 0 1.5rem 0;
+}
+
+.v2-tab-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+}
+
+.v2-tab-btn.active-tab {
+    color: var(--text-primary);
+    border-bottom-color: var(--text-primary);
+}
+
+.viewport-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.font-size-btn {
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 0.2rem 0.6rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-left: 0.3rem;
+}
+
+.hollywood-layout-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.5rem;
+}
+
+.hollywood-script-viewport {
+    background-color: var(--script-paper);
+    color: var(--script-text);
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.95rem;
+    padding: 3rem 2.2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    white-space: pre-wrap;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+    max-height: 480px;
+    overflow-y: auto;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
+}
+
+/* Fullscreen Reader View Override */
+.hollywood-script-viewport.fullscreen-reader-active {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    z-index: 5000;
+    padding: 5rem 15%;
+    background-color: var(--script-paper);
+    color: var(--script-text);
+}
+
+.pitch-notes-sidebar {
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+    border-radius: 6px;
+}
+
+.pitch-notes-sidebar h4 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.4rem;
+}
+
+.pitch-notes-sidebar p {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   9. IDEA 6: AUTOMATED INTERACTIVE STORYBOARD LOOPING MATRIX
+   ========================================================================== */
+.v2-panel-content.hidden-panel {
+    display: none;
+}
+
+.pitch-slide-container {
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 2.2rem;
+    text-align: center;
+}
+
+/* Shared structural sizing elements */
+.pitch-slide, .storyboard-slide-frame {
+    display: none;
+}
+
+.pitch-slide.active-slide, .storyboard-slide-frame.active-frame {
+    display: block;
+}
+
+.pitch-slide h4 {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    letter-spacing: 1px;
+}
+
+/* Storyboard Animation Row Layout Matrix */
+.storyboard-matrix-showcase {
+    margin-top: 2rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 2rem;
+}
+
+.storyboard-matrix-showcase h4 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 1.2rem;
+}
+
+.storyboard-slider-viewport {
+    background-color: var(--script-paper);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Visual Anchor Placeholder mimicking structural sketches */
+.storyboard-sketch-placeholder {
+    width: 100%;
+    max-width: 480px;
+    height: 220px;
+    margin: 0 auto 1.5rem auto;
+    background: repeating-linear-gradient(45deg, var(--bg-main), var(--bg-main) 10px, var(--border-color) 10px, var(--border-color) 20px);
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.sketch-scene-title {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 1rem;
+    font-weight: bold;
+    background: var(--bg-card);
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    box-shadow: var(--shadow-sm);
+    text-transform: uppercase;
+}
+
+.storyboard-notes-block {
+    max-width: 650px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.storyboard-notes-block p {
+    font-size: 0.85rem !important;
+    margin-bottom: 0.4rem !important;
+}
+
+/* Control Interfaces Panel for Storyboard Playback Loop */
+.storyboard-controls-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 1.2rem;
+    flex-wrap: wrap;
+}
+
+.slider-speed-box {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.speed-slider-input {
+    cursor: pointer;
+    accent-color: var(--text-primary);
+}
+
+.slide-nav-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.slide-nav-btn, .story-playback-btn {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 0.5rem 1.2rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.slide-nav-btn:hover, .story-playback-btn:hover {
+    background-color: var(--bg-main);
+}
+
+.slide-indicator, .storyboard-indicator {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+
+.character-list {
+    list-style-type: square;
+    padding-left: 1.2rem;
+    font-size: 0.9rem;
+}
+
+.character-list li {
+    margin-bottom: 0.5rem;
+}
+
+/* ==========================================================================
+   10. CREATIVE TIMELINE PROFILE COMPONENTS
+   ========================================================================== */
+.profile-card h2, .contact-card h2 {
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+}
+
+.bio-intro {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.framework-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+}
+
+.framework-block {
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+    border-radius: 6px;
+}
+
+.framework-block h4 {
+    font-size: 0.95rem;
+    margin-bottom: 0.6rem;
+}
+
+.framework-block p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.sub-section-heading {
+    font-size: 1.3rem;
+    margin: 3rem 0 1.5rem 0;
+    font-weight: 500;
+}
+
+/* Vertical Chronological Axis Timeline */
+.vertical-timeline {
+    position: relative;
+    border-left: 2px solid var(--border-color);
+    margin-left: 1rem;
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.timeline-node {
+    position: relative;
+}
+
+/* Timeline bullet points design */
+.timeline-node::before {
+    content: "";
+    position: absolute;
+    left: calc(-2rem - 6px);
+    top: 4px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--text-primary);
+    border: 2px solid var(--bg-card);
+}
+
+.timeline-date {
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    margin-bottom: 0.25rem;
+}
+
+.timeline-content h5 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+}
+
+.timeline-content p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.timeline-location {
+    font-size: 0.75rem;
+    display: block;
+    margin-top: 0.4rem;
+    font-weight: 600;
+}
+
+.toolkit-wrapper {
+    margin-top: 3rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 2rem;
+}
+
+.toolkit-badges {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-top: 0.8rem;
+}
+
+.tool-tag {
+    font-size: 0.8rem;
+    font-weight: 600;
+    background-color: var(--bg-main);
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+}
+
+/* ==========================================================================
+   11. TRANSACTION CONTROL CONTACT FORMS
+   ========================================================================== */
+.contact-meta {
+    margin-bottom: 2rem;
+}
+
+.contact-meta p {
+    margin-bottom: 0.4rem;
+}
+
+.contact-meta a {
+    color: var(--text-primary);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.form-grid-2x2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form-group label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+button[type="submit"] {
+    background-color: var(--text-primary);
+    color: var(--bg-main);
+    border: none;
+    padding: 1rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+button[type="submit"]:hover {
+    opacity: 0.9;
+}
+
+.success-message {
+    background-color: #10b981;
+    color: white;
+    padding: 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+/* ==========================================================================
+   12. FOOTER & COMPONENT UTILITIES
+   ========================================================================== */
+.back-to-top-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 900;
+    background-color: var(--text-primary);
+    color: var(--bg-main);
+    border: none;
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.back-to-top-btn.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.app-footer {
+    padding: 2.5rem 5%;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   13. RESPONSIVE ADAPTIVE MEDIA VIEWPORTS
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .select-filters-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .
