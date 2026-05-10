@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <!-- Fixed Header & Navigation -->
+    <!-- Fixed Navigation Bar -->
     <header class="app-header">
         <div class="logo">Sathwik's Writings</div>
         <nav class="nav-links">
@@ -19,21 +19,28 @@
         </nav>
     </header>
 
-    <!-- Hero Showcase Section -->
+    <!-- Latest Activity Notification Banner -->
+    <div class="update-banner">
+        <span>⚡ <strong>Latest Update:</strong> Embedded comprehensive v2.0 character profiles and target market matrices for the complete screenplay slate.</span>
+    </div>
+
+    
     <section class="hero-section">
         <h1>Kancharla Sathwik Prince</h1>
         <p class="tagline">Screenplay Writer • Director <span class="sub-role">(Shooting Scripts Only)</span> • Editor <span class="sub-role">(Lined Scripts Only)</span></p>
     </section>
 
-    <!-- Main Content Area -->
+    <!-- Core Content Wrapper -->
     <main class="portfolio-container">
 
-        <!-- Scripts Showcase Section -->
+        <!-- Screenplay Discovery Engine Section -->
         <section id="scripts-section" class="main-section">
             <div class="section-header">
                 <h2>Screenplays & Slate</h2>
+                
+                <!-- Interactive Filter Controls -->
                 <div class="search-filter-controls">
-                    <input type="text" id="search-bar" placeholder="Search by title, keyword, or plot...">
+                    <input type="text" id="search-bar" placeholder="Search title, theme, logline...">
                     <select id="genre-filter">
                         <option value="all">All Genres</option>
                         <option value="action">Action</option>
@@ -51,20 +58,39 @@
                         <option value="short film">Short Film</option>
                     </select>
                 </div>
+
+                <!-- Theme / Trope Cloud Filter -->
+                <div class="tag-cloud-container">
+                    <span class="tag-cloud-label">Filter by Theme:</span>
+                    <div id="tag-cloud" class="tag-cloud">
+                        <!-- Instantiated dynamically via Javascript -->
+                    </div>
+                </div>
             </div>
 
-            <!-- Dynamic Scripts Grid Container -->
+            <!-- Dynamic Scripts Mount Target -->
             <div id="scripts-grid" class="scripts-grid"></div>
         </section>
 
-        <!-- About Me Section -->
+        <!-- Professional Background Card -->
         <section id="about-section" class="main-section profile-card">
             <h2>About The Writer</h2>
             <p>I am an innovative storyteller balancing technical precision and creative vision. My journey into screenwriting began in <strong>March 2025</strong> while pursuing my <strong>I BTECH II CSE</strong> degree at the <strong>NRI Institute of Technology (Autonomous)</strong> in Visadala, Guntur, Andhra Pradesh. Currently in my <strong>III year</strong>, I treat screenwriting as both an art form and a precise science.</p>
             <p>My artistic identity is built upon clear creative boundaries: I craft rich foundational narratives as a <strong>Screenplay Writer</strong>, transition concepts into technical execution as a <strong>Director for shooting scripts only</strong>, and orchestrate visual structures as an <strong>Editor for lined scripts only</strong>.</p>
+            
+            <!-- Tool Stack Manifest -->
+            <div class="toolkit-container">
+                <h3>Writer's Toolkit</h3>
+                <div class="toolkit-grid">
+                    <div class="tool-item">📁 Final Draft</div>
+                    <div class="tool-item">✍️ Fade In Pro</div>
+                    <div class="tool-item">💻 WriterDuet</div>
+                    <div class="tool-item">⚙️ Git Architecture</div>
+                </div>
+            </div>
         </section>
 
-        <!-- Interactive Contact Section -->
+        <!-- Contact Form Panel -->
         <section id="contact-section" class="main-section contact-card">
             <h2>Industry Representation & Inquiries</h2>
             <p>For script options, representation inquiries, or discussing shooting/lined script collaborations, get in touch directly.</p>
@@ -75,16 +101,26 @@
             
             <form id="portfolio-contact-form" class="contact-form">
                 <div class="form-group">
-                    <label for="form-name">Name / Company</label>
-                    <input type="text" id="form-name" required placeholder="Production House, Producer, or Director name">
+                    <label for="form-name">Name / Production House</label>
+                    
                 </div>
                 <div class="form-group">
                     <label for="form-email">Email Address</label>
-                    <input type="email" id="form-email" required placeholder="your.email@company.com">
+                    <input type="email" id="form-email" required placeholder="your.email@studio.com">
                 </div>
                 <div class="form-group">
-                    <label for="form-message">Message</label>
-                    <textarea id="form-message" rows="5" required placeholder="Specify which script slate or project you are interested in exploring..."></textarea>
+                    <label for="form-intent">Inquiry Purpose</label>
+                    <select id="form-intent" required>
+                        <option value="" disabled selected>Select alternative intent...</option>
+                        <option value="optioning">Script Optioning / Acquisition</option>
+                        <option value="directing">Director Collaboration (Shooting Scripts)</option>
+                        <option value="editing">Editor Engagement (Lined Scripts)</option>
+                        <option value="feedback">General Industry Feedback</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="form-message">Message (<span id="char-counter">500</span> characters remaining)</label>
+                    <textarea id="form-message" rows="5" maxlength="500" required placeholder="Specify which script slate or project you are interested in exploring..."></textarea>
                 </div>
                 <button type="submit" id="submit-btn">Send Message</button>
                 <div id="form-success-msg" class="success-message hidden">Your message has been processed successfully! Sathwik will respond via email.</div>
@@ -93,12 +129,14 @@
 
     </main>
 
-    <!-- Footer Copyright -->
+    <!-- Floating Navigation Anchor -->
+    <button id="back-to-top" class="back-to-top-btn" aria-label="Scroll to top">▲</button>
+
     <footer class="app-footer">
         <p>&copy; 2026 Kancharla Sathwik Prince. All rights reserved.</p>
     </footer>
 
-    <!-- Script execution linkage order (Data must load prior to core logic) -->
+    <!-- Dynamic Dependency Sequence -->
     <script src="scripts-data.js"></script>
     <script src="app.js"></script>
 </body>
