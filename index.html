@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sathwik's Writings | Screenplay Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Fixed Header & Navigation -->
+    <header class="app-header">
+        <div class="logo">Sathwik's Writings</div>
+        <nav class="nav-links">
+            <a href="#scripts-section">Scripts</a>
+            <a href="#about-section">About</a>
+            <a href="#contact-section">Contact</a>
+            <button id="theme-toggle" aria-label="Toggle dark/light mode">🌓</button>
+        </nav>
+    </header>
+
+    <!-- Hero Showcase Section -->
+    <section class="hero-section">
+        <h1>Kancharla Sathwik Prince</h1>
+        <p class="tagline">Screenplay Writer • Director <span class="sub-role">(Shooting Scripts Only)</span> • Editor <span class="sub-role">(Lined Scripts Only)</span></p>
+    </section>
+
+    <!-- Main Content Area -->
+    <main class="portfolio-container">
+
+        <!-- Scripts Showcase Section -->
+        <section id="scripts-section" class="main-section">
+            <div class="section-header">
+                <h2>Screenplays & Slate</h2>
+                <div class="search-filter-controls">
+                    <input type="text" id="search-bar" placeholder="Search by title, keyword, or plot...">
+                    <select id="genre-filter">
+                        <option value="all">All Genres</option>
+                        <option value="action">Action</option>
+                        <option value="comedy">Comedy</option>
+                        <option value="drama">Drama</option>
+                        <option value="fantasy">Fantasy</option>
+                        <option value="horror">Horror</option>
+                        <option value="romance">Romance</option>
+                        <option value="sci-fi">Sci-Fi</option>
+                        <option value="thriller">Thriller</option>
+                    </select>
+                    <select id="format-filter">
+                        <option value="all">All Formats</option>
+                        <option value="feature">Feature Film</option>
+                        <option value="short film">Short Film</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Dynamic Scripts Grid Container -->
+            <div id="scripts-grid" class="scripts-grid"></div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about-section" class="main-section profile-card">
+            <h2>About The Writer</h2>
+            <p>I am an innovative storyteller balancing technical precision and creative vision. My journey into screenwriting began in <strong>March 2025</strong> while pursuing my <strong>I BTECH II CSE</strong> degree at the <strong>NRI Institute of Technology (Autonomous)</strong> in Visadala, Guntur, Andhra Pradesh. Currently in my <strong>III year</strong>, I treat screenwriting as both an art form and a precise science.</p>
+            <p>My artistic identity is built upon clear creative boundaries: I craft rich foundational narratives as a <strong>Screenplay Writer</strong>, transition concepts into technical execution as a <strong>Director for shooting scripts only</strong>, and orchestrate visual structures as an <strong>Editor for lined scripts only</strong>.</p>
+        </section>
+
+        <!-- Interactive Contact Section -->
+        <section id="contact-section" class="main-section contact-card">
+            <h2>Industry Representation & Inquiries</h2>
+            <p>For script options, representation inquiries, or discussing shooting/lined script collaborations, get in touch directly.</p>
+            <div class="contact-meta">
+                <p>📍 Vasavi Nagar, Guntur, Andhra Pradesh</p>
+                <p>📧 <a href="mailto:ksathwik026@gmail.com">ksathwik026@gmail.com</a></p>
+            </div>
+            
+            <form id="portfolio-contact-form" class="contact-form">
+                <div class="form-group">
+                    <label for="form-name">Name / Company</label>
+                    <input type="text" id="form-name" required placeholder="Production House, Producer, or Director name">
+                </div>
+                <div class="form-group">
+                    <label for="form-email">Email Address</label>
+                    <input type="email" id="form-email" required placeholder="your.email@company.com">
+                </div>
+                <div class="form-group">
+                    <label for="form-message">Message</label>
+                    <textarea id="form-message" rows="5" required placeholder="Specify which script slate or project you are interested in exploring..."></textarea>
+                </div>
+                <button type="submit" id="submit-btn">Send Message</button>
+                <div id="form-success-msg" class="success-message hidden">Your message has been processed successfully! Sathwik will respond via email.</div>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- Footer Copyright -->
+    <footer class="app-footer">
+        <p>&copy; 2026 Kancharla Sathwik Prince. All rights reserved.</p>
+    </footer>
+
+    <!-- Script execution linkage order (Data must load prior to core logic) -->
+    <script src="scripts-data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
