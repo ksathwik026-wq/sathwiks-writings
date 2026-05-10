@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const successMessage = document.getElementById('form-success-msg');
     const tagCloudContainer = document.getElementById('tag-cloud');
     const backToTopBtn = document.getElementById('back-to-top');
+    const savedCountBadge = document.getElementById('saved-count');
 
     let activeTag = 'all';
 
@@ -49,6 +50,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Initialize Bookmarks Array from LocalStorage
+    let savedScriptsList = JSON.parse(localStorage.getItem('sathwik_bookmarks')) || [];
+    function updateBookmarkCount() {
+        if (savedCountBadge) {
+            savedCountBadge.textContent = savedScriptsList.length;
+        }
+    }
+
     // 3. Render Engine for Portfolio Data Cards (Version 2.0)
     function renderPortfolioCards(scriptsData) {
         scriptsGrid.innerHTML = '';
@@ -62,6 +71,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const cardElement = document.createElement('div');
             cardElement.className = 'script-card';
             cardElement.id = `script-${script.id}`;
+
+            const isBookmarked = savedScriptsList.includes(script.id);
+            const bookmarkIcon = isBookmarked ? '★ Bookmarked' : '☆ Bookmark';
 
             // Generate Character HTML list
             let charactersHtml = '';
@@ -89,7 +101,10 @@ document.addEventListener('DOMContentLoaded', () => {
                             <span class="badge target-industry">${script.industry}</span>
                         </div>
                     </div>
-                    <div class="accordion-arrow">▼</div>
+                    <div style="display:flex; align-items:center; gap:1.5rem;">
+                        <button class="bookmark-btn" data-id="${script.id}">${bookmarkIcon}</button>
+                        <div class="accordion-arrow">▼</div>
+                    </div>
                 </div>
                 <div class="script-details-pane">
                     <div class="details-content-inner">
@@ -158,11 +173,27 @@ document.addEventListener('DOMContentLoaded', () => {
             // Accordion Collapse/Expand Event Trigger
             const summaryClickArea = cardElement.querySelector('.script-summary');
             summaryClickArea.addEventListener('click', (e) => {
+                if (e.target.classList.contains('bookmark-btn')) return; // Prevent collapse when bookmarking
                 const isCurrentlyExpanded = cardElement.classList.contains('expanded');
                 document.querySelectorAll('.script-card').forEach(c => c.classList.remove('expanded'));
                 if (!isCurrentlyExpanded) {
                     cardElement.classList.add('expanded');
                 }
+            });
+
+            // Bookmark Button Functional Logic Engine
+            const bBtn = cardElement.querySelector('.bookmark-btn');
+            bBtn.addEventListener('click', () => {
+                const sId = parseInt(bBtn.getAttribute('data-id'));
+                if (savedScriptsList.includes(sId)) {
+                    savedScriptsList = savedScriptsList.filter(id => id !== sId);
+                    bBtn.textContent = '☆ Bookmark';
+                } else {
+                    savedScriptsList.push(sId);
+                    bBtn.textContent = '★ Bookmarked';
+                }
+                localStorage.setItem('sathwik_bookmarks', JSON.stringify(savedScriptsList));
+                updateBookmarkCount();
             });
 
             // Tab Switching Switchboards (Excerpt View vs Pitch Deck View)
@@ -284,5 +315,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Run Startup Subsystems
     generateTagCloud();
+    updateBookmarkCount();
     renderPortfolioCards(SCREENPLAY_PORTFOLIO_DATA);
 });
